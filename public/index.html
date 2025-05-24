@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Sản Phẩm</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body { padding-top: 20px; }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+            overflow-y: auto;
+            outline: 0;
+            z-index: 1050;
+        }
+        .modal.show {
+            display: block;
+        }
+
+        .modal-backdrop {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1040;
+            width: 100vw;
+            height: 100vh;
+            background-color: #000;
+        }
+        .modal-backdrop.fade {
+            opacity: 0;
+        }
+        .modal-backdrop.show {
+            display: block;
+            opacity: 0.5;
+        }
+
+        .action-buttons .btn { margin-left: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mb-4">Danh Sách Sản Phẩm</h1>
+        <button id="addProductBtn" class="btn btn-primary mb-3">Thêm Sản Phẩm Mới</button>
+
+        <ul id="productList" class="list-group"></ul>
+    </div>
+
+    <div class="modal" id="productModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document"> <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle">Thêm Sản Phẩm</h5>
+                    <button type="button" class="close" aria-label="Close" id="closeModalBtnTop">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="productForm">
+                        <input type="hidden" id="productId">
+                        <div class="form-group">
+                            <label for="productName">Tên Sản Phẩm</label>
+                            <input type="text" class="form-control" id="productName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="productDescription">Mô Tả</label>
+                            <textarea class="form-control" id="productDescription"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="productPrice">Giá</label>
+                            <input type="number" class="form-control" id="productPrice" step="0.01" min="0" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="cancelModalBtn">Hủy</button>
+                    <button type="button" class="btn btn-primary" id="saveProductBtn">Lưu Sản Phẩm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-backdrop fade" id="modalBackdrop"></div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="app.js"></script> </body>
+</html>
